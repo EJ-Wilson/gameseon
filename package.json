@@ -1,5 +1,5 @@
 {
-  "name": "gameseon",
+  "name": "supportr",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -13,10 +13,16 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@material-ui/core": "^4.11.0",
+    "@material-ui/icons": "^4.9.1",
+    "mongodb": "^3.6.0",
+    "mongoose": "^5.10.0",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-hot-loader": "^4.12.21"
+    "react-helmet": "^6.1.0",
+    "react-hot-loader": "^4.12.21",
+    "realm": "^6.0.4"
   },
   "devDependencies": {
     "@neutrinojs/react": "^9.3.0",

@@ -1,0 +1,13 @@
+.Home {
+    display: flex;
+    flex-direction: column;
+  
+    margin: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .formBox > * {
+    color: #ffffff !important;
+    padding: 25px !important;;
+  }

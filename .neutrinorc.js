@@ -9,7 +9,7 @@ module.exports = {
     standard(),
     react({
       html: {
-        title: 'gameseon'
+        title: 'Supportr'
       }
     }),
   ],

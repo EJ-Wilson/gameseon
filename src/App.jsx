@@ -1,30 +1,26 @@
 import { hot } from 'react-hot-loader'
 import React from 'react'
+import Helmet from 'react-helmet'
 
 import './App.css'
 import './fonts.css'
-import PosterRow from './Components/PosterRow/PosterRow.jsx'
-import Topbar from './Components/Topbar/Topbar.jsx'
-import Infoscreen from './Components/Infoscreen/Infoscreen.jsx'
+// import Home from './Components/Home/Home.jsx'
+import Backend from './Components/Backend/Backend.jsx'
 
 const App = () => {
-  const [screenVis, updateVis] = React.useState({ visibility: 'hidden' })
-  const [projectID, updateProject] = React.useState('')
-
-  const openInfoscreen = (game) => {
-    updateVis({ visibility: 'visible' })
-    updateProject(game)
-  }
-
-  const closeInfoscreen = () => {
-    updateVis({ visibility: 'hidden' })
-  }
-
   return (
     <div className='App'>
-      <Topbar />
-      <PosterRow openInfoscreen={openInfoscreen} />
-      <Infoscreen style={screenVis} closeInfoscreen={closeInfoscreen} projectID={projectID} />
+
+      <Helmet>
+        <meta
+          name='viewport'
+          content='minimum-scale=1, initial-scale=1, width=device-width'
+        />
+        <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap' />
+        <link rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons' />
+      </Helmet>
+
+      <Backend />
     </div>
   )
 }
