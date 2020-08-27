@@ -15,6 +15,8 @@
   "dependencies": {
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
+    "babel": "^6.23.0",
+    "babel-plugin-module-alias": "^1.6.0",
     "mongodb": "^3.6.0",
     "mongoose": "^5.10.0",
     "prop-types": "^15.7.2",
@@ -27,6 +29,7 @@
   "devDependencies": {
     "@neutrinojs/react": "^9.3.0",
     "@neutrinojs/standardjs": "^9.3.0",
+    "babel-plugin-module-resolver": "4.0.0",
     "eslint": "^7.6.0",
     "neutrino": "^9.3.0",
     "webpack": "^4.44.1",

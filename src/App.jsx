@@ -2,6 +2,9 @@ import { hot } from 'react-hot-loader'
 import React from 'react'
 import Helmet from 'react-helmet'
 
+import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles'
+import muiTheme from './Themes/muiTheme.js'
+
 import './App.css'
 import './fonts.css'
 // import Home from './Components/Home/Home.jsx'
@@ -20,7 +23,9 @@ const App = () => {
         <link rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons' />
       </Helmet>
 
-      <Backend />
+      <MuiThemeProvider theme={muiTheme}>
+        <Backend />
+      </MuiThemeProvider>
     </div>
   )
 }
