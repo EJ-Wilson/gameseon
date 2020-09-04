@@ -9,6 +9,10 @@
     "build": "webpack --mode production",
     "lint": "eslint --cache --format codeframe --ext mjs,jsx,js src"
   },
+  "engines": {
+    "node": "10.x",
+    "npm": "6.x"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -17,21 +21,21 @@
     "@material-ui/icons": "^4.9.1",
     "babel": "^6.23.0",
     "babel-plugin-module-alias": "^1.6.0",
-    "mongodb": "^3.6.0",
-    "mongoose": "^5.10.0",
+    "mongodb": "^3.6.1",
+    "mongoose": "^5.10.3",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-helmet": "^6.1.0",
     "react-hot-loader": "^4.12.21",
-    "realm": "^6.0.4"
+    "realm": "^6.1.0"
   },
   "devDependencies": {
-    "@neutrinojs/react": "^9.3.0",
-    "@neutrinojs/standardjs": "^9.3.0",
+    "@neutrinojs/react": "^9.4.0",
+    "@neutrinojs/standardjs": "^9.4.0",
     "babel-plugin-module-resolver": "4.0.0",
-    "eslint": "^7.6.0",
-    "neutrino": "^9.3.0",
+    "eslint": "^7.8.1",
+    "neutrino": "^9.4.0",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0"

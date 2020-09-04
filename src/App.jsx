@@ -7,7 +7,7 @@ import muiTheme from './Themes/muiTheme.js'
 
 import './App.css'
 import './fonts.css'
-// import Home from './Components/Home/Home.jsx'
+import Home from './Components/Home/Home.jsx'
 import Backend from './Components/Backend/Backend.jsx'
 
 const App = () => {
@@ -26,6 +26,8 @@ const App = () => {
       <MuiThemeProvider theme={muiTheme}>
         <Backend />
       </MuiThemeProvider>
+
+      {/* <Home /> */}
     </div>
   )
 }

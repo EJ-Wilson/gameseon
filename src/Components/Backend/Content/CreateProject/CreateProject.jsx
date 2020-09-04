@@ -7,7 +7,7 @@ import { Button, Box, TextField, MenuItem, Typography } from '@material-ui/core'
 import { withStyles } from '@material-ui/core/styles'
 
 import './CreateProject.css'
-import { saveProject } from "../../../../lib/MongoDB.js"
+// import { saveProject } from "../../../../lib/MongoDB.js"
 import { ProjectTypes, maxNameLength } from '../../../../assets/ProjectFormData.js'
 
 const styles = theme => ({
@@ -84,7 +84,7 @@ const CreateProject = (props) => {
 
   const submitForm = () => {
     formData.projPublished = true;
-    saveProject(formData);
+    // saveProject(formData);
   }
 
   const [formData, setFormData] = React.useState({
