@@ -63,4 +63,4 @@ saveProject({
   type: 'game'
 })
 
-export default { findProjects, saveProject, connect }
+export { findProjects, saveProject, connect }
