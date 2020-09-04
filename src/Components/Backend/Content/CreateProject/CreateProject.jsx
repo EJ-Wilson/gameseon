@@ -7,8 +7,8 @@ import { Button, Box, TextField, MenuItem, Typography } from '@material-ui/core'
 import { withStyles } from '@material-ui/core/styles'
 
 import './CreateProject.css'
-import { saveProject } from './src/lib/MongoDB.js'
-import { ProjectTypes, maxNameLength } from './src/assets/ProjectFormData.js'
+import { saveProject } from '../../../../Lib/MongoDB.js'
+import { ProjectTypes, maxNameLength } from '../../../../Assets/ProjectFormData.js'
 
 const styles = theme => ({
   root: {
