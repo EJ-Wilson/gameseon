@@ -12,6 +12,7 @@ const projectSchema = new mongoose.Schema({
 
 // Schema Methods
 projectSchema.methods.constructSchema = function (projectInfo) {
+  const Project = mongoose.model('Project', projectSchema)
   return new Project(projectInfo)
 }
 

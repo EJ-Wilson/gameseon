@@ -7,7 +7,7 @@ import { Button, Box, TextField, MenuItem, Typography } from '@material-ui/core'
 import { withStyles } from '@material-ui/core/styles'
 
 import './CreateProject.css'
-// import { saveProject } from "../../../../lib/MongoDB.js"
+import { saveProject } from '../../../../lib/MongoDB.js'
 import { ProjectTypes, maxNameLength } from '../../../../assets/ProjectFormData.js'
 
 const styles = theme => ({
@@ -78,26 +78,26 @@ const CreateProject = (props) => {
   var textDate = date.toISOString().slice(0, 10)
 
   const saveForm = () => {
-    formData.projPublished = false;
-    saveProject(formData);
+    formData.projPublished = false
+    saveProject(formData)
   }
 
   const submitForm = () => {
-    formData.projPublished = true;
+    formData.projPublished = true
     // saveProject(formData);
   }
 
   const [formData, setFormData] = React.useState({
-      projName: "",
-      projType: "Game",
-      projDesc: "",
-      projRelease: textDate,
-      projContributors: "",
-      projPoster: ""
-  });
+    projName: '',
+    projType: 'Game',
+    projDesc: '',
+    projRelease: textDate,
+    projContributors: '',
+    projPoster: ''
+  })
 
   const handleProjName = (event) => {
-    setFormData(Object.assign(formData, {projName: formData.projName.concat(event.target.value)}));
+    setFormData(Object.assign(formData, { projName: formData.projName.concat(event.target.value) }))
     if (formData.projName.length < maxNameLength) {
       setNameValidity(false)
       setNameHelper('')
@@ -108,25 +108,24 @@ const CreateProject = (props) => {
   }
 
   const handleProjType = (event) => {
-    setFormData(Object.assign(formData, {projType: formData.projType.concat(event.target.value)}));
+    setFormData(Object.assign(formData, { projType: formData.projType.concat(event.target.value) }))
   }
 
   const handleProjDesc = (event) => {
-    setFormData(Object.assign(formData, {projDesc: formData.projDesc.concat(event.target.value)}));
+    setFormData(Object.assign(formData, { projDesc: formData.projDesc.concat(event.target.value) }))
   }
 
   const handleProjRelease = (event) => {
-    setFormData(Object.assign(formData, {projRelease: formData.projRelease.concat(event.target.value)}));
+    setFormData(Object.assign(formData, { projRelease: formData.projRelease.concat(event.target.value) }))
   }
 
   const handleProjContributors = (event) => {
-    setFormData(Object.assign(formData, {projContributors: formData.projContributors.concat(event.target.value)}));
+    setFormData(Object.assign(formData, { projContributors: formData.projContributors.concat(event.target.value) }))
   }
 
   const handleProjPoster = (event) => {
-    setFormData(Object.assign(formData, {projPoster: formData.projPoster.concat(event.target.value)}));
+    setFormData(Object.assign(formData, { projPoster: formData.projPoster.concat(event.target.value) }))
   }
-
 
   return (
     <div className='CreateProject'>
