@@ -1,12 +1,17 @@
-const express = require('express')
-const path = require('path')
+const path = require("path");
+const express = require("express");
+const app = express(); // create express app
 const PORT = process.env.PORT || 5000
 
-express()
-  .use(express.static(path.join(__dirname, 'public')))
-  .set('views', path.join(__dirname, 'views'))
-  .set('view engine', 'ejs')
-  .get('/', (req, res) => res.render('index', function (err, html) {
-    res.send(build/index)
-  }))
-  .listen(PORT, () => console.log(`Listening on ${ PORT }`))
+// add middlewares
+app.use(express.static(path.join(__dirname, "..", "build")));
+app.use(express.static("public"));
+
+app.use((req, res, next) => {
+  res.sendFile(path.join(__dirname, "..", "build", "index.html"));
+});
+
+// start express server on port 5000
+app.listen(PORT, () => {
+  console.log("server started on port 5000");
+});
