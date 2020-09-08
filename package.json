@@ -31,7 +31,10 @@
     "react-dom": "^16.13.1",
     "react-helmet": "^6.1.0",
     "react-hot-loader": "^4.12.21",
-    "realm": "^6.1.0"
+    "realm": "^6.1.0",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
   },
   "devDependencies": {
     "@neutrinojs/react": "^9.4.0",
