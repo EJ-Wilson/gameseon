@@ -6,5 +6,7 @@ express()
   .use(express.static(path.join(__dirname, 'public')))
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
-  .get('/', (req, res) => res.render('build/index.html'))
+  .get('/', (req, res) => res.render('index', function (err, html) {
+    res.send(build/index)
+  }))
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
