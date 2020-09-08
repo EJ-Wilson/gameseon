@@ -5,7 +5,7 @@ const PORT = process.env.PORT || 5000
 
 // add middlewares
 app.use(express.static(path.join(__dirname, "build")));
-app.use(express.static("public"));
+app.use(express.static(path.join("public", "build")));
 
 app.use((req, res, next) => {
   res.sendFile(path.join(__dirname, "build", "index.html"));
