@@ -1,1 +1,1 @@
-web: webpack --mode production; node index.js; cd build
+web: webpack --mode production; node index.js
