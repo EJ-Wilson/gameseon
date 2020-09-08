@@ -5,10 +5,10 @@ const PORT = process.env.PORT || 5000
 
 // add middlewares
 app.use(express.static(path.join(__dirname, "build")));
-app.use(express.static(path.join("public", "build")));
+app.use(express.static("public"));
 
 app.use((req, res, next) => {
-  res.sendFile(path.join(__dirname, "build", "index.html"));
+  res.sendFile(path.join(__dirname, "index.html"));
 });
 
 // start express server on port 5000
