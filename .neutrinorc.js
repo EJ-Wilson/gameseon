@@ -4,7 +4,7 @@ const react = require('@neutrinojs/react');
 module.exports = {
   options: {
     root: __dirname,
-    output: '.'
+    output: './assets'
   },
   use: [
     standard(),
@@ -15,5 +15,3 @@ module.exports = {
     }),
   ],
 };
-
-// 

@@ -1,1 +1,1 @@
-web: webpack --mode production; node index.js
+web: webpack --mode production; cp .\build .; node index.js

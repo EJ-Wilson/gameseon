@@ -4,7 +4,7 @@ const app = express(); // create express app
 const PORT = process.env.PORT || 5000
 
 // add middlewares
-app.use(express.static(path.join(__dirname, "build")));
+app.use(express.static(path.join(__dirname)));
 app.use(express.static("public"));
 
 app.use((req, res, next) => {
