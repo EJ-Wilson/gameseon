@@ -8,7 +8,9 @@ const app = express(),
             HTML_FILE = path.join(DIST_DIR, 'index.html')
 app.use(express.static(DIST_DIR))
 
-app.listen(process.env.PORT || 5000, () => {
+const host = '0.0.0.0';
+const port = process.env.PORT || 5000
+app.listen(port, host, () => {
     console.log(`App listening to ${process.env.PORT || 5000}....`)
     console.log('Press Ctrl+C to quit.')
 })
