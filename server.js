@@ -11,9 +11,8 @@ app.get('/', (req, res) => {
     res.sendFile(HTML_FILE)
 })
 
-const PORT = process.env.PORT || 5000
-app.listen(PORT, () => {
-    console.log(`App listening to ${PORT}....`)
+app.listen(process.env.PORT || 5000, () => {
+    console.log(`App listening to ${process.env.PORT || 5000}....`)
     console.log('Press Ctrl+C to quit.')
 })
 
