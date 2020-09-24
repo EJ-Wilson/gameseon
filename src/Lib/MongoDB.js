@@ -54,6 +54,7 @@ function findProjects () {
   })
 }
 
+/*
 saveProject({
   name: 'Detective Bot',
   release: new Date(2020, 5, 26), // May 26, 2020
@@ -62,5 +63,6 @@ saveProject({
   posterURL: './urlyo',
   type: 'game'
 })
+*/
 
-export { findProjects, saveProject, connect }
+module.exports = { findProjects, saveProject }

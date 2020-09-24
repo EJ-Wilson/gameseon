@@ -2,12 +2,12 @@
 import { hot } from 'react-hot-loader'
 import React from 'react'
 import PropTypes from 'prop-types'
+import $ from 'jquery'
 
 import { Button, Box, TextField, MenuItem, Typography } from '@material-ui/core'
 import { withStyles } from '@material-ui/core/styles'
 
 import './CreateProject.css'
-import { saveProject } from '../../../../Lib/MongoDB.js'
 import { ProjectTypes, maxNameLength } from '../../../../Assets/ProjectFormData.js'
 
 const styles = theme => ({
@@ -79,12 +79,26 @@ const CreateProject = (props) => {
 
   const saveForm = () => {
     formData.projPublished = false
-    saveProject(formData)
+    $.post({
+      url: 'http://localhost/projects',
+      data: formData,
+      success: function (data) {
+        console.log('Success')
+      },
+      dataType: 'json'
+    })
   }
 
   const submitForm = () => {
     formData.projPublished = true
-    // saveProject(formData);
+    $.post({
+      url: 'http://localhost/projects',
+      data: formData,
+      success: function (data) {
+        console.log('Success')
+      },
+      dataType: 'json'
+    })
   }
 
   const [formData, setFormData] = React.useState({
@@ -150,7 +164,7 @@ const CreateProject = (props) => {
             error={nameValid}
             label='Project Name'
             className={classes.formInput}
-            onChange={handleProjName}
+            onChange={() => handleProjName()}
             defaultValue={formData.projName}
             variant='outlined'
             fullWidth
@@ -161,7 +175,7 @@ const CreateProject = (props) => {
             select
             label='Project Type'
             defaultValue={formData.projType}
-            onChange={handleProjType}
+            onChange={() => handleProjType()}
             className={classes.formInput}
             variant='outlined'
             fullWidth
@@ -178,7 +192,7 @@ const CreateProject = (props) => {
             className={classes.formInput}
             variant='outlined'
             defaultValue={formData.projDesc}
-            onChange={handleProjDesc}
+            onChange={() => handleProjDesc()}
             multiline
             fullWidth
           />
@@ -188,7 +202,7 @@ const CreateProject = (props) => {
             label='Release Date'
             type='date'
             defaultValue={formData.projRelease}
-            onChange={handleProjRelease}
+            onChange={() => handleProjRelease()}
             variant='outlined'
             className={classes.formInput}
             fullWidth
@@ -199,7 +213,7 @@ const CreateProject = (props) => {
             className={classes.formInput}
             variant='outlined'
             defaultValue={formData.projContributors}
-            onChange={handleProjContributors}
+            onChange={() => handleProjContributors()}
             fullWidth
             helperText='Please add any contributors. Seperate contributors with a comma'
           />
@@ -212,7 +226,7 @@ const CreateProject = (props) => {
               multiple
               type='file'
               defaultValue={formData.projPoster}
-              onChange={handleProjPoster}
+              onChange={() => handleProjPoster()}
             />
             <label htmlFor='contained-button-file'>
 
@@ -233,10 +247,10 @@ const CreateProject = (props) => {
           <Box
             className={classes.buttonBox}
           >
-            <Button className={classes.button} variant='contained' color='primary' onClick={saveForm}>
+            <Button className={classes.button} variant='contained' color='primary' onClick={() => saveForm()}>
               Save
             </Button>
-            <Button className={classes.button} variant='contained' color='primary' onClick={submitForm}>
+            <Button className={classes.button} variant='contained' color='primary' onClick={() => submitForm()}>
               Submit
             </Button>
           </Box>

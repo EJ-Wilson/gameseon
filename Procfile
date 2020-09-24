@@ -1,1 +1,1 @@
-web: webpack --mode production; cp .\build\* .; node index.js
+web: npm run heroku
