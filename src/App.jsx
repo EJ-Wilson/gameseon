@@ -1,14 +1,16 @@
 import { hot } from 'react-hot-loader'
 import React from 'react'
 import Helmet from 'react-helmet'
-
-// import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles'
-// import muiTheme from './Themes/muiTheme.js'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from 'react-router-dom'
 
 import './App.css'
 import './fonts.css'
-import Home from './Components/Home/Home.jsx'
-// import Backend from './Components/Backend/Backend.jsx'
+import Home from './Components/FrontendComponents/Home/Home.jsx'
+import Backend from './Components/BackendComponents/Backend.jsx'
 
 const App = () => {
   return (
@@ -23,11 +25,15 @@ const App = () => {
         <link rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons' />
       </Helmet>
 
-      {/* <MuiThemeProvider theme={muiTheme}>
-        <Backend />
-      </MuiThemeProvider> */}
+      <Router>
 
-      <Home />
+        <Switch>
+          <Route path='/partner' component={Backend} />
+          <Route path='/' component={Home} />
+        </Switch>
+
+      </Router>
+
     </div>
   )
 }

@@ -1,19 +1,19 @@
 
 import { hot } from 'react-hot-loader'
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import './Content.css'
-import CreateProject from './CreateProject/CreateProject.jsx'
 
 const Content = (props) => {
-  const [page, setPage] = React.useState(<CreateProject />)
-
-  setPage()
+  Content.propTypes = {
+    page: PropTypes.any.isRequired
+  }
 
   return (
     <div className='Content'>
 
-      {page}
+      {props.page}
 
     </div>
   )

@@ -3,7 +3,7 @@ import React from 'react'
 
 import './Topbar.css'
 
-import Title from '../../Components/Title/Title.jsx'
+import Title from '../Title/Title.jsx'
 
 const Topbar = () => (
   <div className='Topbar'>

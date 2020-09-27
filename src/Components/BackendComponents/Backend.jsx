@@ -3,9 +3,19 @@ import { hot } from 'react-hot-loader'
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import {
+  Switch,
+  Route,
+  useRouteMatch
+} from 'react-router-dom'
+
 import Content from './Content/Content.jsx'
 import Navigator from './Navigator/Navigator.jsx'
-import { withStyles } from '@material-ui/core/styles'
+import { withStyles, ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles'
+
+import muiTheme from '../../Themes/muiTheme.js'
+
+import CreateProject from './Content/CreateProject/CreateProject.jsx'
 
 import './Backend.css'
 
@@ -41,14 +51,23 @@ const Backend = (props) => {
 
   const { classes } = props
 
-  return (
-    <div className={classes.root}>
-      <Navigator />
-      <div className={classes.appContent}>
-        <Content />
-      </div>
+  const match = useRouteMatch()
 
-    </div>
+  return (
+    <MuiThemeProvider theme={muiTheme}>
+      <div className={classes.root}>
+        <Navigator />
+
+        <Switch>
+          <Route path={`${match.path}/newproject`} component={Backend}>
+            <div className={classes.appContent}>
+              <Content page={<CreateProject />} />
+            </div>
+          </Route>
+        </Switch>
+
+      </div>
+    </MuiThemeProvider>
   )
 }
 

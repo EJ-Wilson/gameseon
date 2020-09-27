@@ -80,7 +80,7 @@ const CreateProject = (props) => {
   const saveForm = () => {
     formData.projPublished = false
     $.post({
-      url: 'http://localhost/projects',
+      url: 'http://localhost/saveproject',
       data: formData,
       success: function (data) {
         console.log('Success')
@@ -92,7 +92,7 @@ const CreateProject = (props) => {
   const submitForm = () => {
     formData.projPublished = true
     $.post({
-      url: 'http://localhost/projects',
+      url: 'http://localhost/submitproject',
       data: formData,
       success: function (data) {
         console.log('Success')
@@ -164,7 +164,7 @@ const CreateProject = (props) => {
             error={nameValid}
             label='Project Name'
             className={classes.formInput}
-            onChange={() => handleProjName()}
+            onChange={handleProjName}
             defaultValue={formData.projName}
             variant='outlined'
             fullWidth
@@ -175,7 +175,7 @@ const CreateProject = (props) => {
             select
             label='Project Type'
             defaultValue={formData.projType}
-            onChange={() => handleProjType()}
+            onChange={handleProjType}
             className={classes.formInput}
             variant='outlined'
             fullWidth
@@ -192,7 +192,7 @@ const CreateProject = (props) => {
             className={classes.formInput}
             variant='outlined'
             defaultValue={formData.projDesc}
-            onChange={() => handleProjDesc()}
+            onChange={handleProjDesc}
             multiline
             fullWidth
           />
@@ -202,7 +202,7 @@ const CreateProject = (props) => {
             label='Release Date'
             type='date'
             defaultValue={formData.projRelease}
-            onChange={() => handleProjRelease()}
+            onChange={handleProjRelease}
             variant='outlined'
             className={classes.formInput}
             fullWidth
@@ -213,7 +213,7 @@ const CreateProject = (props) => {
             className={classes.formInput}
             variant='outlined'
             defaultValue={formData.projContributors}
-            onChange={() => handleProjContributors()}
+            onChange={handleProjContributors}
             fullWidth
             helperText='Please add any contributors. Seperate contributors with a comma'
           />
@@ -226,7 +226,7 @@ const CreateProject = (props) => {
               multiple
               type='file'
               defaultValue={formData.projPoster}
-              onChange={() => handleProjPoster()}
+              onChange={handleProjPoster}
             />
             <label htmlFor='contained-button-file'>
 

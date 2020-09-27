@@ -6,9 +6,9 @@ import PropTypes from 'prop-types'
 import './PosterRow.css'
 import Poster from '../Poster/Poster.jsx'
 
-import EvePostPoster from '../../Content/Posters/EveningPostPoster.jpg'
-import DetectiveBotPoster from '../../Content/Posters/DetectiveBotPoster.jpg'
-import BunkerDwnPoster from '../../Content/Posters/BunkerDownPoster.jpg'
+import EvePostPoster from '../../../Content/Posters/EveningPostPoster.jpg'
+import DetectiveBotPoster from '../../../Content/Posters/DetectiveBotPoster.jpg'
+import BunkerDwnPoster from '../../../Content/Posters/BunkerDownPoster.jpg'
 
 const PosterRow = (props) => {
   PosterRow.propTypes = {
