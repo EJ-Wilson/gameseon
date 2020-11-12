@@ -1,21 +1,23 @@
 
 import { hot } from 'react-hot-loader'
-import React from 'react'
+import React, { useEffect, useCallback } from 'react'
 import PropTypes from 'prop-types'
 
 import {
   Switch,
   Route,
-  useRouteMatch
+  useRouteMatch,
+  useHistory
 } from 'react-router-dom'
 
 import Content from './Content/Content.jsx'
 import Navigator from './Navigator/Navigator.jsx'
 import { withStyles, ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles'
-
 import muiTheme from '../../Themes/muiTheme.js'
 
 import CreateProject from './Content/CreateProject/CreateProject.jsx'
+import Projects from './Content/Projects/Projects.jsx'
+import EditProject from './Content/EditProject/EditProject.jsx'
 
 import './Backend.css'
 
@@ -53,6 +55,23 @@ const Backend = (props) => {
 
   const match = useRouteMatch()
 
+  const [project, setProject] = React.useState({})
+  const [openEdit, setOpenEdit] = React.useState(false)
+  const openEditProject = (proj) => {
+    setProject(proj)
+    setOpenEdit(true)
+  }
+
+  const history = useHistory()
+  const editProjectClick = useCallback(() => history.push(`${match.path}/editproject`), [history])
+  const newProjectClick = useCallback(() => history.push(`${match.path}/newProject`), [history])
+
+  useEffect(() => {
+    if (openEdit) {
+      editProjectClick()
+    }
+  }, [openEdit])
+
   return (
     <MuiThemeProvider theme={muiTheme}>
       <div className={classes.root}>
@@ -63,6 +82,14 @@ const Backend = (props) => {
             <div className={classes.appContent}>
               <Content page={<CreateProject />} />
             </div>
+          </Route>
+          <Route path={`${match.path}/projects`} component={Backend}>
+            <div className={classes.appContent}>
+              <Content page={<Projects editProject={openEditProject} newProj={newProjectClick} />} />
+            </div>
+          </Route>
+          <Route path={`${match.path}/editproject`} component={Backend}>
+            <Content page={<EditProject projectinfo={project} parentPath={match.path} />} />
           </Route>
         </Switch>
 

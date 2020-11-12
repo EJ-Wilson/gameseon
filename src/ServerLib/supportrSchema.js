@@ -7,7 +7,8 @@ const projectSchema = new mongoose.Schema({
   projRelease: Date,
   projContributors: [String],
   projPoster: String,
-  projPublished: Boolean
+  projPublished: Boolean,
+  projOwner: String
 })
 
 // Schema Methods

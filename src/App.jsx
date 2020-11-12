@@ -11,6 +11,7 @@ import './App.css'
 import './fonts.css'
 import Home from './Components/FrontendComponents/Home/Home.jsx'
 import Backend from './Components/BackendComponents/Backend.jsx'
+import Form from './Components/General/Form/Form.jsx'
 
 const App = () => {
   return (
@@ -28,6 +29,7 @@ const App = () => {
       <Router>
 
         <Switch>
+          <Route path='/form' component={Form} />
           <Route path='/partner' component={Backend} />
           <Route path='/' component={Home} />
         </Switch>

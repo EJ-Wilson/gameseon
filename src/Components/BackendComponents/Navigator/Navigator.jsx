@@ -1,10 +1,11 @@
 
 import { hot } from 'react-hot-loader'
 import React from 'react'
-import { Drawer, List, ListItem, ListItemIcon, ListItemText, Typography } from '@material-ui/core'
+import { Drawer, List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core'
 import { Home } from '@material-ui/icons'
 import { withStyles } from '@material-ui/core/styles'
 import PropTypes from 'prop-types'
+import logo from '../../../Content/Supporter Logo.png'
 
 import {
   Link,
@@ -22,12 +23,6 @@ const styles = theme => ({
     paddingTop: 64 // equal to AppBar height (on desktop)
   }
 })
-
-const PrimaryTypography = withStyles({
-  root: {
-    color: '#ffbe5d'
-  }
-})(Typography)
 
 const Navigator = (props) => {
   Navigator.propTypes = {
@@ -51,9 +46,7 @@ const Navigator = (props) => {
       <List>
 
         <ListItem>
-          <PrimaryTypography variant='h4' component='h4'>
-            Supporter
-          </PrimaryTypography>
+          <img src={logo} alt='Supporter Home' className='logo-head' />
         </ListItem>
 
         <ListItem>
@@ -71,15 +64,6 @@ const Navigator = (props) => {
               <Home />
             </ListItemIcon>
             <ListItemText className='link'> Analytics </ListItemText>
-          </Link>
-        </ListItem>
-
-        <ListItem>
-          <Link to={`${match.url}/newproject`} key={genKey()} className='link'>
-            <ListItemIcon>
-              <Home />
-            </ListItemIcon>
-            <ListItemText className='link'> New Project </ListItemText>
           </Link>
         </ListItem>
 

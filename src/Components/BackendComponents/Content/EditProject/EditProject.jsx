@@ -1,13 +1,13 @@
-
 import { hot } from 'react-hot-loader'
-import React from 'react'
+import React, { useCallback } from 'react'
 import PropTypes from 'prop-types'
 import $ from 'jquery'
 
+import { useHistory } from 'react-router-dom'
 import { Button, Box, TextField, MenuItem, Typography } from '@material-ui/core'
 import { withStyles } from '@material-ui/core/styles'
 
-import './CreateProject.css'
+import './EditProject.css'
 import { ProjectTypes, maxNameLength } from '../../../../Assets/ProjectFormData.js'
 import ImageUploader from '../../../General/Form/FormObjects/ImageUploader/ImageUploader.jsx'
 
@@ -47,6 +47,7 @@ const styles = theme => ({
   },
   label: {
     color: 'rgb(118, 118, 118)'
+
   },
   title: {
     color: theme.palette.text.primary
@@ -59,35 +60,25 @@ const PrimaryTypography = withStyles({
   }
 })(Typography)
 
-const CreateProject = (props) => {
-  CreateProject.propTypes = {
+const EditProject = (props) => {
+  EditProject.propTypes = {
     classes: PropTypes.any.isRequired,
     buttonBox: PropTypes.any.isRequired,
     form: PropTypes.any.isRequired,
     formInput: PropTypes.any.isRequired,
-    button: PropTypes.any.isRequired
+    button: PropTypes.any.isRequired,
+    projectinfo: PropTypes.any.isRequired,
+    parentPath: PropTypes.any.isRequired
   }
 
   const { classes } = props
   const [nameValid, setNameValidity] = React.useState(false)
   const [nameHelper, setNameHelper] = React.useState('')
 
-  var date = new Date()
-  var textDate = date.toISOString().slice(0, 10)
+  var textDate = props.projectinfo.projRelease.slice(0, 10)
 
-  // Form post
-  const saveForm = () => {
-    formData.projPublished = false
-    $.ajax({
-      url: '/saveproject',
-      type: 'POST',
-      data: formData,
-      success: function (data) {
-        console.log('Success')
-      },
-      dataType: 'json'
-    })
-  }
+  const history = useHistory()
+  const handleOnClick = useCallback(() => history.push(`${props.parentPath}/projects`), [history])
 
   const submitForm = () => {
     formData.projPublished = true
@@ -100,6 +91,10 @@ const CreateProject = (props) => {
       },
       dataType: 'json'
     })
+  }
+
+  if (Object.entries(props.projectinfo).length === 0) {
+    handleOnClick()
   }
 
   // React state for form data
@@ -140,12 +135,8 @@ const CreateProject = (props) => {
     setFormData(Object.assign(formData, { projContributors: event.target.value }))
   }
 
-  /* const handleProjPoster = (event) => {
-    setFormData(Object.assign(formData, { projPoster: event.target.value }))
-  } */
-
   return (
-    <div className='CreateProject'>
+    <div className='project'>
 
       <Box
         display='flex'
@@ -158,7 +149,7 @@ const CreateProject = (props) => {
       >
 
         <PrimaryTypography variant='h3' component='h3'>
-          Project Upload
+          Edit Project
         </PrimaryTypography>
 
         <form noValidate autoComplete='off' className={classes.form}>
@@ -168,7 +159,7 @@ const CreateProject = (props) => {
             label='Project Name'
             className={classes.formInput}
             onChange={handleProjName}
-            defaultValue={formData.projName}
+            defaultValue={props.projectinfo.projName}
             variant='outlined'
             fullWidth
             helperText={nameHelper}
@@ -177,7 +168,7 @@ const CreateProject = (props) => {
           <TextField
             select
             label='Project Type'
-            defaultValue={formData.projType}
+            defaultValue={props.projectinfo.projType}
             onChange={handleProjType}
             className={classes.formInput}
             variant='outlined'
@@ -194,7 +185,7 @@ const CreateProject = (props) => {
             label='Project Description'
             className={classes.formInput}
             variant='outlined'
-            defaultValue={formData.projDesc}
+            defaultValue={props.projectinfo.projDesc}
             onChange={handleProjDesc}
             multiline
             fullWidth
@@ -204,7 +195,7 @@ const CreateProject = (props) => {
             id='date'
             label='Release Date'
             type='date'
-            defaultValue={formData.projRelease}
+            defaultValue={textDate}
             onChange={handleProjRelease}
             variant='outlined'
             className={classes.formInput}
@@ -215,22 +206,26 @@ const CreateProject = (props) => {
             label='Contributors'
             className={classes.formInput}
             variant='outlined'
-            defaultValue={formData.projContributors}
+            defaultValue={props.projectinfo.projContributors}
             onChange={handleProjContributors}
             fullWidth
             helperText='Please add any contributors. Seperate contributors with a comma'
           />
+
+          <Box className={classes.buttonBox}>
+            <img src={props.projectinfo.projPoster} alt={props.projectinfo.projName} />
+          </Box>
 
           <ImageUploader data={formData} onDataChange={setFormData} />
 
           <Box
             className={classes.buttonBox}
           >
-            <Button className={classes.button} variant='contained' color='primary' onClick={() => saveForm()}>
+            <Button className={classes.button} variant='contained' color='primary' onClick={() => submitForm()}>
               Save
             </Button>
-            <Button className={classes.button} variant='contained' color='primary' onClick={() => submitForm()}>
-              Submit
+            <Button className={classes.button} variant='contained' color='primary' onClick={() => {}}>
+              Preview
             </Button>
           </Box>
 
@@ -240,4 +235,4 @@ const CreateProject = (props) => {
   )
 }
 
-export default withStyles(styles)(hot(module)(CreateProject))
+export default withStyles(styles)(hot(module)(EditProject))

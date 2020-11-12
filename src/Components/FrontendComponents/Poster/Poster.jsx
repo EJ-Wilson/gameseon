@@ -5,16 +5,15 @@ import PropTypes from 'prop-types'
 
 import './Poster.css'
 
-const Poster = ({ openInfoscreen, game, source }) => {
+const Poster = ({ projectClick, project }) => {
   Poster.propTypes = {
-    openInfoscreen: PropTypes.any.isRequired,
-    game: PropTypes.string,
-    source: PropTypes.string
+    projectClick: PropTypes.any.isRequired,
+    project: PropTypes.any
   }
 
   return (
-    <div className='Poster' onClick={() => openInfoscreen(game)}>
-      <img src={source} alt={game} />
+    <div className='Poster' onClick={() => projectClick(project)}>
+      <img src={project.projPoster} alt={project.projName} />
     </div>
   )
 }

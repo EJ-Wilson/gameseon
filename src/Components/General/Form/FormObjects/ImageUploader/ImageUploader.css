@@ -1,0 +1,8 @@
+.ImageUploader {
+    width: 500px;
+    overflow: hidden;
+}
+
+.ImageUploader > .dzu-dropzone {
+    overflow: hidden !important;
+}
